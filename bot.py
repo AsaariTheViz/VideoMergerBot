@@ -1,9 +1,3 @@
-from dotenv import load_dotenv
-
-load_dotenv(
-    "config.env",
-    override=True,
-)
 import asyncio
 import os
 import shutil
