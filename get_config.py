@@ -4,26 +4,7 @@ import os
 import subprocess
 from dotenv import load_dotenv
 
-CONFIG_FILE_URL = os.environ.get('CONFIG_FILE_URL')
-try:
-    if len(CONFIG_FILE_URL) == 0:
-        raise TypeError
-    try:
-        res = rget(CONFIG_FILE_URL)
-        if res.status_code == 200:
-            with open('config.env', 'wb+') as f:
-                f.write(res.content)
-        else:
-            LOGGER.error(f"Failed to download config.env {res.status_code}")
-    except Exception as e:
-        LOGGER.error(f"CONFIG_FILE_URL: {e}")
-except Exception as e:
-    LOGGER.error(e)
-    pass
-load_dotenv(
-    "config.env",
-    override=True,
-)
+
 # tired of redeploying :(
 UPSTREAM_REPO = os.environ.get('UPSTREAM_REPO')
 UPSTREAM_BRANCH = os.environ.get('UPSTREAM_BRANCH')
